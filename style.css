@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0%;
+  background: linear-gradient(90deg, #ff0050, #00f2ea);
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* Floating Random Icons */
+.floating-icons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 10px yellow);
+  transition: transform 12s ease-in-out;
+  animation: floatMove 15s infinite ease-in-out alternate;
+}
+
+/* Symbol styling for floating decorative symbols */
+.symbol {
+  position: absolute;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent; /* use background-clip for gradient text */
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(90deg, #69C9D0 0%, #EE1D52 100%);
+  mix-blend-mode: screen;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  --dur: 12s;
+  font-size: var(--size, 28px);
+  opacity: 0.95;
+  animation: floatMove var(--dur) infinite ease-in-out alternate;
+  transform-origin: center;
+}
+
+/* Slight variation in floating animation for symbols */
+@keyframes floatMove {
+  0% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(-24px) rotate(6deg) scale(1.05); }
+  100% { transform: translateY(18px) rotate(-6deg) scale(0.98); }
+}
+
+/* Slow floating animation */
+@keyframes floatMove {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+  100% { transform: translateY(20px) rotate(-10deg); }
+}
+
+/* Hero Section */
+.hero {
+  background: url('TikTok Video Challenge Broucher.jpg') center/cover no-repeat;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 15px #00f2ea;
+}
+
+/* Title container to allow centered logo overlay */
+.title {
+  position: relative;
+  display: inline-block;
+}
+
+/* Centered logo over the title with fade-in/fade-out animation */
+.title-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0;
+  /* sync with the handwriting reveal (3s) with a slight delay */
+  animation: logoFade 3s ease 0.2s forwards;
+  z-index: 3; /* above the text */
+}
+
+@keyframes logoFade {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.02); }
+  70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+}
+
+@media (max-width: 480px) {
+  .title-logo { width: 44px; animation-duration: 2.4s; animation-delay: 0.15s; }
+}
+
+/* Handwriting reveal for hero title */
+.handwritten {
+  display: inline-block;
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: transparent; /* show via background-clip */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Start with sky-blue and end with reddish-pink across the reveal */
+  background-image: linear-gradient(90deg, #69C9D0 0%, #EE1D52 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  /* stroke-like reveal; slower for emphasis */
+  animation: handWrite 3s ease forwards;
+}
+
+@keyframes handWrite {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
+/* removed penMove - pen indicator was removed per user request */
+
+/* Reduce the effect duration slightly on small screens */
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 2.2rem; }
+  .handwritten { animation-duration: 2.4s; }
+}
+
+/* Fade-in for the top logo (only fades in, no fade out) */
+.top-logo {
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: topLogoFadeIn 2s ease forwards;
+}
+
+@keyframes topLogoFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.date {
+  color: #ff0050;
+  margin-bottom: 20px;
+}
+
+.join-btn {
+  background: linear-gradient(90deg, #ff0050, #00f2ea);
+  border: none;
+  padding: 12px 25px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.join-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00f2ea;
+}
+
+/* Sample Video button - outline variant to sit next to Join/Enroll */
+.sample-btn {
+  /* Match primary gradient styling to visually pair with Join/Enroll */
+  background: linear-gradient(90deg, #ff0050, #00f2ea);
+  border: none;
+  padding: 12px 25px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  margin-left: 12px;
+  box-shadow: 0 6px 18px rgba(0,242,234,0.06);
+}
+
+.sample-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 26px rgba(0,242,234,0.12);
+}
+
+/* Teal glow for Sample Video button matching the Enroll button */
+.sample-btn {
+  --glow-color: rgba(0,242,234,0.28); /* teal */
+  box-shadow: 0 6px 18px rgba(0,242,234,0.06), 0 0 18px var(--glow-color);
+}
+
+.sample-btn:hover {
+  box-shadow: 0 12px 34px rgba(0,242,234,0.14), 0 0 36px rgba(0,242,234,0.38);
+  animation: sampleGlowPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sampleGlowPulse {
+  0%   { box-shadow: 0 10px 26px rgba(0,242,234,0.10), 0 0 32px rgba(0,242,234,0.30); }
+  50%  { box-shadow: 0 14px 40px rgba(0,242,234,0.14), 0 0 48px rgba(0,242,234,0.45); }
+  100% { box-shadow: 0 10px 26px rgba(0,242,234,0.10), 0 0 32px rgba(0,242,234,0.30); }
+}
+
+@media (max-width: 480px) {
+  .join-btn, .sample-btn {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
+  .sample-btn { margin-left: 0; }
+}
+
+/* Buttons container in hero to keep buttons centered and responsive */
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+@media (max-width: 768px) {
+  .hero-buttons { gap: 10px; }
+}
+
+/* Ensure buttons are perfectly centered on small and medium screens */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-buttons .join-btn,
+  .hero-buttons .sample-btn {
+    width: 86%;
+    max-width: 360px;
+    margin: 10px auto;
+    box-sizing: border-box;
+  }
+  .hero-buttons .sample-btn { margin-left: 0; }
+}
+
+/* Countdown styles */
+.countdown {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.countdown-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 56px;
+}
+
+.countdown-value {
+  font-size: clamp(1rem, 3.2vw, 1.6rem);
+  background: rgba(255,255,255,0.03);
+  padding: 6px 10px;
+  border-radius: 8px;
+  min-width: 48px;
+  text-align: center;
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1), background 220ms;
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  color: #ccc;
+  margin-top: 4px;
+}
+
+.countdown-separator {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.85);
+}
+
+/* pop animation when number changes */
+.countdown-value.pop {
+  transform: scale(1.12);
+  background: rgba(255,255,255,0.06);
+}
+
+@media (max-width: 480px) {
+  .countdown { gap: 6px; margin-top: 10px; }
+  .countdown-segment { min-width: 44px; }
+}
+
+/* Rules Section */
+.rules {
+  padding: 80px 10%;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.rules h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #00f2ea;
+  text-shadow: 0 0 10px #ff0050;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  transition: 0.4s ease;
+  backdrop-filter: blur(6px);
+  text-align: left;
+}
+
+.card h3 {
+  color: #ff0050;
+  margin-bottom: 15px;
+}
+
+.card ul {
+  list-style: none;
+}
+
+.card ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 242, 234, 0.4);
+}
+
+/* Footer */
+footer {
+  background: #111;
+  padding: 20px;
+  color: #aaa;
+  border-top: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 56px;
+  height: auto;
+  display: inline-block;
+}
+
+@media (max-width: 480px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-logo { margin-bottom: 8px; }
+}
+
+/* Prize Circle Badge */
+.prize-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* responsive sizing: scale with viewport but clamp between reasonable limits */
+  width: clamp(110px, 20vw, 160px);
+  height: clamp(110px, 20vw, 160px);
+  margin: 18px auto;
+  position: relative;
+  border-radius: 50%;
+  background: transparent; /* keep center transparent */
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  z-index: 2;
+  box-sizing: border-box;
+  padding: 6px;
+  /* subtle outer shadow for embossed effect */
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.55));
+}
+
+.prize-circle b {
+  display: block;
+  padding: 4px;
+  font-size: clamp(0.7rem, 2.2vw, 1rem);
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.2px;
+  line-height: 1.05;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* Highlight for the amount inside the prize circle */
+.prize-amount {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(105,201,208,0.08), rgba(238,29,82,0.08));
+  color: #fff;
+  font-weight: 800;
+  margin: 0 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4), inset 0 -4px 8px rgba(255,255,255,0.02);
+  /* accent the amount with the two-tone gradient text */
+  background-image: linear-gradient(90deg, #69C9D0 0%, #EE1D52 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive: smaller badge on small screens */
+@media (max-width: 480px) {
+  .prize-circle {
+    width: 110px;
+    height: 110px;
+  }
+  .prize-circle b { font-size: 0.95rem; }
+}
+
+/* Use a pseudo-element to draw a perfectly rounded gradient ring (avoids squared corners from border-image) */
+.prize-circle::before {
+  --thickness: clamp(4px, 0.6vw, 6px); /* responsive ring thickness */
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* Conic gradient for a smooth TikTok-like two-color ring */
+  background: conic-gradient(#69C9D0, #EE1D52);
+  /* carve out the center to make a ring */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--thickness)), black calc(100% - var(--thickness)));
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--thickness)), black calc(100% - var(--thickness)));
+  /* outer + inner shadows to create embossed look */
+  box-shadow: 0 10px 18px rgba(0,0,0,0.6), inset 0 6px 12px rgba(255,255,255,0.03);
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  /* rotate the ring continuously (faster) */
+  animation: ringRotate 4s linear infinite, ringPulse 4s ease-in-out infinite;
+}
+
+/* Slightly thinner ring on small screens */
+@media (max-width: 480px) {
+.prize-circle::before { --thickness: clamp(3px, 0.9vw, 5px); }
+}
+
+/* Make buttons stack earlier on medium screens */
+@media (max-width: 768px) {
+  .join-btn, .sample-btn {
+    display: block;
+    width: 70%;
+    margin: 10px auto;
+  }
+  .sample-btn { margin-left: 0; }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes ringPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* Subtle overall badge lift to match ring pulse (applied to container) */
+.prize-circle {
+  /* subtle lift/pulse on the whole badge (faster and higher) */
+  animation: badgeLift 4s ease-in-out infinite;
+}
+
+@keyframes badgeLift {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .prize-circle,
+  .prize-circle::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Typewriter effect for card text */
+
+.typewriter {
+  display: inline-block;
+  /* Allow wrapping so long text remains visible */
+  white-space: normal;
+  vertical-align: top;
+  border-right: .12em solid rgba(255,255,255,0.9);
+  /* animate max-width from 0 to 100% so wrapped lines are revealed */
+  max-width: 0;
+  /*
+    animations:
+    - typing: reveal the text
+    - blinkCaret: blink caret while typing (starts at --delay)
+    - caretHide: a short animation that runs after typing finishes to hide the caret
+  */
+  animation: typing 1.6s steps(40, end) var(--delay, 0s) forwards,
+             blinkCaret .7s step-end var(--delay, 0s) infinite,
+             caretHide .01s linear calc(var(--delay, 0s) + 1.6s) forwards;
+}
+
+@keyframes typing {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+@keyframes blinkCaret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(255,255,255,0.9); }
+}
+
+/* Hide the caret after typing completes */
+@keyframes caretHide {
+  to { border-color: transparent; }
+}
+
+/* Ensure the li doesn't wrap the animation width unexpectedly */
+.card ul li {
+  /* allow list items to expand/wrap and remain visible */
+  overflow: visible;
+}
+
+/* Strong mobile override to ensure the Sample Video button is perfectly centered
+   and matches the enroll button width on small and medium screens. This uses
+   higher specificity and !important flags only for margins to override any
+   earlier conflicting rules the user may have edited. */
+@media (max-width: 768px) {
+  .hero-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-buttons .join-btn,
+  .hero-buttons .sample-btn {
+    display: block;
+    width: min(360px, 92%);
+    max-width: 360px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* make sure sample button has no stray alignment from other selectors */
+  .hero-buttons .sample-btn {
+    align-self: center;
+  }
+}
+
+/* Countdown breathing glow: alternate colors and rhythmic 'breath' animation
+   Days (and following separator) = reddish-pink, Hours = sky-blue, Mins = reddish-pink,
+   Secs = sky-blue. Use nth-of-type to target the segment/sep ordering inside .countdown.
+*/
+:root {
+  --tiktok-cyan: #69C9D0; /* sky-blue */
+  --tiktok-pink: #EE1D52; /* reddish-pink */
+}
+
+/* Base separator neutral color is kept, we'll override specific separators below */
+.countdown-separator { color: rgba(255,255,255,0.85); }
+
+/* Common breathing animation for countdown values */
+@keyframes breathe-cyan {
+  0%, 100% { box-shadow: 0 0 10px rgba(105,201,208,0.20), 0 0 24px rgba(105,201,208,0.14); text-shadow: 0 0 6px rgba(105,201,208,0.12); transform: scale(1); }
+  50%     { box-shadow: 0 0 34px rgba(105,201,208,0.46), 0 0 64px rgba(105,201,208,0.40); text-shadow: 0 0 20px rgba(105,201,208,0.36); transform: scale(1.06); }
+}
+
+@keyframes breathe-pink {
+  0%, 100% { box-shadow: 0 0 10px rgba(238,29,82,0.20), 0 0 24px rgba(238,29,82,0.14); text-shadow: 0 0 6px rgba(238,29,82,0.12); transform: scale(1); }
+  50%     { box-shadow: 0 0 34px rgba(238,29,82,0.46), 0 0 64px rgba(238,29,82,0.40); text-shadow: 0 0 20px rgba(238,29,82,0.36); transform: scale(1.06); }
+}
+
+/* Apply to Days (first segment) — reddish-pink */
+.countdown > div:nth-of-type(1) .countdown-value {
+  animation: breathe-pink 2.8s ease-in-out infinite;
+  box-shadow: 0 0 14px rgba(238,29,82,0.36);
+  text-shadow: 0 0 10px rgba(238,29,82,0.28);
+  will-change: transform, box-shadow, text-shadow;
+}
+/* Separator after Days (2nd element) */
+.countdown > div:nth-of-type(2) {
+  color: var(--tiktok-pink);
+  text-shadow: 0 0 16px rgba(238,29,82,0.45);
+}
+
+/* Hours (3rd element) — sky-blue */
+.countdown > div:nth-of-type(3) .countdown-value {
+  animation: breathe-cyan 2.6s ease-in-out infinite;
+  animation-delay: 0.15s;
+  box-shadow: 0 0 14px rgba(105,201,208,0.36);
+  text-shadow: 0 0 10px rgba(105,201,208,0.28);
+  will-change: transform, box-shadow, text-shadow;
+}
+/* Separator after Hours (4th element) */
+.countdown > div:nth-of-type(4) {
+  color: var(--tiktok-cyan);
+  text-shadow: 0 0 16px rgba(105,201,208,0.45);
+}
+
+/* Mins (5th element) — reddish-pink */
+.countdown > div:nth-of-type(5) .countdown-value {
+  animation: breathe-pink 2.8s ease-in-out infinite;
+  animation-delay: 0.3s;
+  box-shadow: 0 0 14px rgba(238,29,82,0.36);
+  text-shadow: 0 0 10px rgba(238,29,82,0.28);
+  will-change: transform, box-shadow, text-shadow;
+}
+/* Separator after Mins (6th element) */
+.countdown > div:nth-of-type(6) {
+  color: var(--tiktok-pink);
+  text-shadow: 0 0 16px rgba(238,29,82,0.45);
+}
+
+/* Secs (7th element) — sky-blue */
+.countdown > div:nth-of-type(7) .countdown-value {
+  animation: breathe-cyan 2.6s ease-in-out infinite;
+  animation-delay: 0.45s;
+  box-shadow: 0 0 14px rgba(105,201,208,0.36);
+  text-shadow: 0 0 10px rgba(105,201,208,0.28);
+  will-change: transform, box-shadow, text-shadow;
+}
+
+/* Slight scale & color accent on pop (already used), keep in sync with breathe */
+.countdown-value.pop {
+  transform: scale(1.08);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .countdown > div:nth-of-type(1) .countdown-value,
+  .countdown > div:nth-of-type(3) .countdown-value,
+  .countdown > div:nth-of-type(5) .countdown-value,
+  .countdown > div:nth-of-type(7) .countdown-value {
+    animation: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}

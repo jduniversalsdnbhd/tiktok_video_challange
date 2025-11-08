@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Video Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top logo (place a file named logo.png in the project root or update the src) -->
+  <img src="logo.png" alt="Logo" class="top-logo" style="display:block;margin:12px auto;max-width:200px;height:auto;" />
+  <!-- Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Floating Random Icons -->
+  <div class="floating-icons" id="floating-icons" aria-hidden="true"></div>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+  <h1><span class="handwritten">TikTok Video Challange</span></h1>
+  <p class="prize-circle"><b>Win Cash Prize <span class="prize-amount">RM <span>1000</span></span></b></p>
+      <b><p class="date">"From 8th Nov - 22 nd Nov 2025"</p></b>
+
+      <div class="hero-buttons">
+        <button class="join-btn" onclick="window.open('https://forms.gle/uYDAQKPHK5ib21on8')">
+          Enroll Now
+        </button>
+        <button class="sample-btn" onclick="window.open('https://vt.tiktok.com/ZSyHhrmUW/')">
+          Verse 1
+        </button>
+        <button class="sample-btn" onclick="window.open('https://vt.tiktok.com/ZSyHB6tW1/')">
+          Verse 2
+        </button>
+      </div>
+      <!-- Countdown (Day : HH : MM : SS) -->
+      <div class="countdown" aria-live="polite" aria-label="Countdown to competition start">
+        <div class="countdown-segment">
+          <div class="countdown-value" id="cd-days">0</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-segment">
+          <div class="countdown-value" id="cd-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-segment">
+          <div class="countdown-value" id="cd-mins">00</div>
+          <div class="countdown-label">Mins</div>
+        </div>
+        <div class="countdown-separator">:</div>
+        <div class="countdown-segment">
+          <div class="countdown-value" id="cd-secs">00</div>
+          <div class="countdown-label">Secs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules Section -->
+  <section class="rules">
+    <h2>Terms & Conditions</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>🔥 How to Join</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:0.15s">Create your TikTok using “Tumpang Famous” by MC Jey.</span></li>
+          <li><span class="typewriter" style="--delay:0.30s">Use the official uploaded sound or base.</span></li>
+          <li><span class="typewriter" style="--delay:0.45s">Tag @mcjey and @jduniversal in your post.</span></li>
+          <li><span class="typewriter" style="--delay:0.60s">Ensure your profile is public.</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🏆 Winner Selection</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:0.75s">Video with highest likes wins RM1000!</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📅 Competition Period</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:0.90s">From 8th Nov 2025 – 22nd Nov 2025</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚠️ Rules</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:1.05s">No paid ads or boosts allowed.</span></li>
+          <li><span class="typewriter" style="--delay:1.20s">Only original videos using “Tumpang Famous”.</span></li>
+          <li><span class="typewriter" style="--delay:1.35s">Minimum 30 participants required.</span></li>
+          <li><span class="typewriter" style="--delay:1.50s">Likes counted at end date.</span></li>
+          <li><span class="typewriter" style="--delay:1.65s">Winner announced on MC Jey’s page.</span></li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3>🪩Event Organizer</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:1.80s">"Mc Jey" &amp; "Karthz Rama"</span></li>
+        </ul>
+      </div>
+      
+      <div class="card">
+        <h3>🗓️ Winner Date</h3>
+        <ul>
+          <li><span class="typewriter" style="--delay:1.95s">winner date announced before one day</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <img src="JD UNIERSAL LOGO.png" alt="JD Universal" class="footer-logo" />
+    <p>Organized by JD Universal SDN BHD | Contact: 017-648 2460</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
